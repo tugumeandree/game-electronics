@@ -10,9 +10,11 @@ export default class Navbar extends React.Component {
   render() {
     return (
       <React.Fragment>
+         
+        
     <NavWrapper className="nav-extended">
         <div className="nav-wrapper">
-
+       
         
           <ul id="nav-mobile" className="">
             <li>
@@ -22,7 +24,7 @@ export default class Navbar extends React.Component {
            </li>
               <li className="right">
               <Link to="/cart">
-              <ButtonContainer className="btn-large col-s6">
+              <ButtonContainer className="btn-large">
               <i className="fas fa-cart-plus"/>
               Cart
               </ButtonContainer>
@@ -43,9 +45,10 @@ export default class Navbar extends React.Component {
         <li className="tab"><Link>Delivery</Link></li>
         <li className="tab"><Link>Payment</Link></li>
           </ul>
+          
           </div>
       </NavWrapper>
-     
+   
       </React.Fragment>
        
     );

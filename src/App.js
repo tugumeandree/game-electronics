@@ -14,6 +14,8 @@ function App() {
   return (
     <React.Fragment>
       <Navbar />
+    
+  
 
 <Switch>
   <Route  exact path="/" component={ProductList}></Route>

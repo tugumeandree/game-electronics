@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import {ProductConsumer} from '../context';
+import PropTypes from 'prop-types';
+
 export default class Product extends Component {
  
   render() {
@@ -9,15 +11,18 @@ export default class Product extends Component {
     return (
       <ProductWrapper className="col  s12 m6 l3">
    <div className="card">
-        <div className="card-image" onClick={
-          ()=>console.log('You clicked on image container')
-        }>
+     <ProductConsumer >
+       {(value)=>(<div 
+       className="card-image" 
+       onClick={()=>{
+         value.handleDetail(id)}}>
           <Link to="/details">
-          <img className="img"src={img}  alt="product"/>
+          <img className="img" src={img}  alt="product"/>
           </Link>
           <button className="btn-large" 
                   disabled={inCart?true:false}
-                  onClick={()=>{console.log("added to cart")}}>
+                  onClick={()=>{
+                    value.addToCart(id)}}>
 
 {inCart?  (
 <p className="" disabled>
@@ -27,8 +32,10 @@ export default class Product extends Component {
   <i className="fas fa-cart-plus"/>
   )}
           </button>
-         
-        </div>
+        
+        </div>)}
+        
+        </ProductConsumer>
         <div className="card-action">
          <p >{title}</p>
          <h5><span>$</span>{price}</h5>
@@ -39,6 +46,15 @@ export default class Product extends Component {
   }
 }
 
+Product.propTypes={
+  product:PropTypes.shape({
+    id:PropTypes.number,
+    img:PropTypes.string,
+    title:PropTypes.string,
+    price:PropTypes.number,
+    inCart:PropTypes.bool
+  }).isRequired
+}
 const ProductWrapper = styled.div`
 .card{
   border-color:transparent;

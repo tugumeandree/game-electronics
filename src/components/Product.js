@@ -22,7 +22,9 @@ export default class Product extends Component {
           <button className="btn-large" 
                   disabled={inCart?true:false}
                   onClick={()=>{
-                    value.addToCart(id)}}>
+                    value.addToCart(id);
+                    value.openModal(id)
+                    }}>
 
 {inCart?  (
 <p className="" disabled>
